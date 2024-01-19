@@ -85,16 +85,15 @@ const App: React.FC = () => {
     setTodos(newTodos)
   }
 
-  // Cargar desde localStorage en la carga inicial y guardar en localStorage cada vez que 'todos' cambie
   useEffect(() => {
     const storedTodos = localStorage.getItem('todos')
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     setTodos(storedTodos !== null && storedTodos !== undefined ? JSON.parse(storedTodos) : mockTodos)
-  }, []) // Se ejecuta solo en la carga inicial
+  }, [])
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
-  }, [todos]) // Se ejecuta cada vez que 'todos' cambia
+  }, [todos])
 
   return (
     <div className='todoapp'>
